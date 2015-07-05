@@ -1,7 +1,7 @@
 # ASP-Iep_Sw_shop
 
 This is simple ASP web shop created as part of project in 
-Infrastructure for Electronic Businesses course on Faculty of Electrical Engineering 
+Infrastructure for e-commerce course on Faculty of Electrical Engineering 
 at Belgrade University , Serbia.
 
 Site was hosted on Azure , using SendGrid for email service and dummy payment service provided by Centili.
