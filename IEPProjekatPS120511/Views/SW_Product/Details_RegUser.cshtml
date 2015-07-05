@@ -1,0 +1,62 @@
+﻿@model IEPProjekatPS120511.Models.SW_Product
+
+@{
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    @Html.ActionLink("<< Back to List", "Index_RegUser")
+    <div style="height:310px">
+        <h2>@HtmlHelpers.ShowLogo(Model.Logo) &nbsp;&nbsp;&nbsp; @Html.DisplayFor(model => model.Name)</h2>
+
+        <hr />
+
+        <div style="width:50%; float:left; height:300px; ;border-right:solid;">
+            <dl class="dl-horizontal">
+
+                <dt>
+                    Version
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tag)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description):
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price):
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+
+            </dl>
+        </div>
+        <div style="width:50%; height:300px; border-left:solid; float:right">
+            &nbsp; &nbsp; &nbsp; Images:<br>
+            &nbsp; &nbsp; &nbsp; @HtmlHelpers.ShowImage(Model.Image)
+        </div>
+
+    </div>
+    <div>
+        <br><br><br><br><br>
+        <hr />
+        <center><p><a class="btn btn-default" @Html.ActionLink("Order", "../Orders/Create", new { id = Model.IDProduct })</a></p></center>
+    </div>
+
+</body>
+</html>

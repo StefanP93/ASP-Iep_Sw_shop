@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body style="background-color:#3d3d41; color:#ffffff;">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#180073; color:#ffffff;">
+        <div class="container" style="background-color:#180073; color:#ffffff;">
+            <div class="navbar-header" style="background-color:#180073; color:#ffffff;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="color:#ffffff;">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("IEP sw Shop", "Index", "SW_Product", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse" style=" color:#ffffff;">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "SW_Product")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content" >
+        @RenderBody()
+       
+    </div>
+    <div style="position:absolute;  bottom: 0; width:100%; background-color:#180073; color:#ffffff;">
+        <hr />
+        <footer>
+            <center>
+                <p> @DateTime.Now.Year <br>IEP Project Stefan Pantelic 511/12</p>
+            </center>
+        </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

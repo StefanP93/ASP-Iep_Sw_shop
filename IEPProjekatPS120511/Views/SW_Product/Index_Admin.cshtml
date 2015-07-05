@@ -1,0 +1,90 @@
+﻿@model PagedList.IPagedList<IEPProjekatPS120511.Models.SW_Product>
+@using PagedList.Mvc;
+
+@{
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml"; 
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+    @{
+        ViewBag.Title = "SW_Product";
+    }
+
+
+    <h2>Products</h2>
+
+ @using (Html.BeginForm("Index_Admin" , "SW_Product" , FormMethod.Get ))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        Price range from: @Html.TextBox("SearchPriceLow", ViewBag.CurrentFilterPcLow as string)
+        to: @Html.TextBox("SearchPriceHigh", ViewBag.CurrentFilterPcHigh as string)
+        <input class="btn btn-default" type="submit" value="Search" />
+        <a class="btn btn-default" @Html.ActionLink("Clear", "Index_Admin", new { sortOrder = ViewBag.NameSortParm, currentFilter = "", currentFilterPcHigh = "", currentFilterPcLow = "" }) 
+     </p>
+}
+
+ <p>
+     <a class="btn btn-default" @Html.ActionLink("Create New", "Create")
+ </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Name", "Index_Admin", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter, currentFilterPcHigh = ViewBag.CurrentFilterPcHigh, currentFilterPcLow = ViewBag.CurrentFilterPcLow })
+            </th>
+            <th>
+                Tag
+            </th>
+            <th>
+                Logo
+            </th>
+            <th>
+                @Html.ActionLink("Price", "Index_Admin", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter, currentFilterPcHigh = ViewBag.CurrentFilterPcHigh, currentFilterPcLow = ViewBag.CurrentFilterPcLow })
+            </th>
+            <th></th>
+        </tr>
+        
+
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tag)
+            </td>
+            <td>
+                @HtmlHelpers.ShowLogo(item.Logo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.IDProduct }) |
+                @Html.ActionLink("Details", "Details_Admin", new { id=item.IDProduct }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.IDProduct })
+            </td>
+        </tr>
+    }
+    
+    </table>
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index_Admin",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</body>
+</html>

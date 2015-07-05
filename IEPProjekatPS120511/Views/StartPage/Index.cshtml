@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Start";
+    Layout = "~/Views/Shared/start.cshtml";
+}
+
+
+<center><h2 style="color:#ffffff">Welcome <br> IEP sw Shop</h2></center>
+
+<div class="headerStart">
+
+    <center><p><a class="btnI" @Html.ActionLink("Login", "Login", "Account")</a></p></center>
+   
+</div>
+<br>
+<div class="headerStart">
+
+    <center><p><a class="btnI" @Html.ActionLink("Register", "Register", "Account")</a></p></center>
+</div>
+<br>
+<div class="headerStart">
+    
+    <center><p><a class="btnI" @Html.ActionLink("Browse as Guest", "Index", "Home")</a></p></center>
+</div>
+

@@ -1,0 +1,69 @@
+﻿@model PagedList.IPagedList<IEPProjekatPS120511.Controllers.OrdersController.OrderElement>
+@using PagedList.Mvc;
+
+
+
+
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+<h2>Orders for @ViewBag.UserName &nbsp; @ViewBag.LastName</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+           Order ID
+        </th>
+        <th>
+           Date
+        </th>
+        <th>
+           Logo
+        </th>
+        <th>
+            Product Name
+        </th>
+        <th>
+            Version
+        </th>
+        <th>
+            Price
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.OrderId
+        </td>
+        <td>
+            @item.Date
+        </td>
+        <td>
+            @HtmlHelpers.ShowLogo(item.Logo)
+        </td>
+        <td>
+            @item.ProductName
+        </td>
+        <td>
+            @item.Tag
+        </td>
+        <td>
+            @item.ProductPrice
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.OrderId }) 
+        </td>
+    </tr>
+}
+
+</table>
+<br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page } ))

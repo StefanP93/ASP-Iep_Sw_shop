@@ -1,0 +1,95 @@
+﻿@model IEPProjekatPS120511.Models.Order
+
+@{
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    @Html.ActionLink("<< Back to List", "Index")
+    <div style="height:310px">
+        <h2>@HtmlHelpers.ShowLogo(@ViewBag.oe.Logo) &nbsp;&nbsp;&nbsp; @ViewBag.oe.ProductName</h2>
+        <hr />
+
+        <div style="width:50%; float:left; height:300px; ;border-right:solid;">
+            <dl class="dl-horizontal">
+                Order Info:
+                <br>
+                
+                <dt>
+                    
+                    Order ID:
+                </dt>
+                <dd>
+                    @ViewBag.oe.OrderId
+                </dd>
+                <dt>
+                    Date:
+                </dt>
+                <dd>
+                    @ViewBag.oe.Date
+                </dd>
+                <dt>
+                    Staus:
+                </dt>
+                <dd>
+                    @ViewBag.oe.Status
+                </dd>
+                <dt>
+                    Type:
+                </dt>
+                <dd>
+                    @ViewBag.oe.Type
+                </dd>
+               Product Info:
+                <br>
+                <dt> 
+                    Version:
+                </dt>
+                <dd>
+                    @ViewBag.oe.Tag
+                </dd>
+                <dt>
+                    Description:
+                </dt>
+                <dd>
+                    @ViewBag.oe.Description
+                </dd>
+                <dt>
+                    Price:
+                </dt>
+                <dd>
+                    @ViewBag.oe.ProductPrice
+                </dd>
+                Buyer Info:
+                <br>
+                <dt>
+                    Name and Surname:
+                </dt>
+                <dd>
+                    @ViewBag.UserName &nbsp; @ViewBag.LastName
+                </dd>
+
+                
+
+            </dl>
+        </div>
+        <div style="width:50%; height:300px; border-left:solid; float:right">
+            &nbsp; &nbsp; &nbsp; Images:<br>
+            &nbsp; &nbsp; &nbsp; @HtmlHelpers.ShowImage(@ViewBag.oe.Image)
+        </div>
+
+    </div>
+    <div>
+        <br><br><br><br><br>
+        <hr />
+        <center><p><a class="btn btn-default" @Html.ActionLink("Order", "CreatePDF", new { id = ViewBag.oe.OrderId })</a></p></center>
+    </div>
+
+</body>
+</html>
